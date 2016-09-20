@@ -33,12 +33,14 @@ class project{
     static int postmins;
     static String intchoice;
     public static void result(){
+        Date date=new Date();
         System.out.println("__________________________________________________________________________");
+        System.out.println("Time:                                              "+date.toString());
         System.out.println("Mr."+name+", living at "+address+" your payment of bills are as follows:");
-        System.out.println("Gas Bill=Rs."+gasbill);
-        System.out.println("Electricity bill=Rs."+paygast);
-        System.out.println("Mobile bill=Rs."+ttdata);
-        System.out.println("Total amount in bills to be paid="+(gasbill+paygast+ttdata));
+        System.out.println("Gas Bill=                                          Rs."+gasbill);
+        System.out.println("Electricity bill=                                  Rs."+paygast);
+        System.out.println("Mobile bill=                                       Rs."+ttdata);
+        System.out.println("Total amount in bills to be paid=                  Rs."+(gasbill+paygast+ttdata));
         System.out.println("Please pay them as soon as possible to avoid extra charges.");
         System.out.println("Thank you!!!!");
     }
@@ -58,7 +60,31 @@ class project{
         }
     }
     //telephone bill starts here
-
+    public static void startup(){
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.println("                                    *****WELCOME TO THE JVMTP BILLING CENTRE*****");
+        System.out.println("                            ");
+        System.out.println("            *****TODAY, WE WILL BE HELPING YOU IN CALCULATING YOUR BILLS, AND REDUCING YOUR BURDEN*****");
+        System.out.println("                            ");
+        System.out.println("           *****YOU CAN CHOOSE AMONG ANY 3 OF THE BILLS AND ALSO ALL THREE OF THEM TO CALCULATE THEM*****");
+        System.out.println("                            ");
+        System.out.println("                          *****THE TYPES OF BILLS Y'ALL CAN CALCULATE ARE AS FOLLOWS:*****");
+        System.out.println("                            ");
+        System.out.println("            1.)GAS BILL FOR THE NUMBER OF MONTHS USED                   ");
+        System.out.println("                            ");
+        System.out.println("            2.)ELECTRICITY BILL FOR ANY NUMBER OF MONTHS");
+        System.out.println("                            ");
+        System.out.println("            3.)TELEPHONE BILL TILL DATE OR AN ESTIMATE ON AN AMOUNT YOU ARE GOING TO PAY ON YOUR NEXT RECHARGE");
+        System.out.println("                            ");
+        System.out.println("   *****WE WILL BE ASKING YOU SOME DETAILS THOSE ARE MANDATORY AND PLEASE ENTER THEM FOR A SMOOTH EXPERIENCE*****");
+        System.out.println("                            ");
+        System.out.println("                                  *****PLEASE FOLLOW HE ON-SCREEN INSTRUCTIONS*****");
+        System.out.println("                                                           ");
+        System.out.println("                                                            ");
+        project obj=new project();
+        obj.name();
+    }
     public static void telephone(){
         Scanner sc=new Scanner(System.in);
         System.out.println("___________________________MOBILE BILL____________________________");
@@ -209,6 +235,7 @@ class project{
             }
             duty=units*0.09;
             paygast=duty+paygas;
+            System.out.println("Bill calculated.");
         }
         else if(sup==2){
             System.out.println("Enter number of units consumed:");
@@ -229,6 +256,11 @@ class project{
             }
             duty=units*0.09;
             paygast=duty+paygas;
+            System.out.println("Bill calculated.");
+        }
+        else{
+            System.out.println("Invalid choice.");
+            System.out.println("Bill not calculated.");
         }
         project rbills2=new project();
         System.out.println("Enter 1 to calculate gas bill.");
@@ -246,7 +278,16 @@ class project{
         }
     }
     //gas bill starts here
-
+    public static void name(){
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Enter name:");
+        name=sc.nextLine();
+        System.out.println("Enter address:");
+        address=sc.nextLine();
+        project obj=new project();
+        obj.main();
+    }
     public static void gas(){
         Scanner sc=new Scanner(System.in);
         System.out.println("________________________________GAS BILL_________________________________");
@@ -254,6 +295,14 @@ class project{
         gasno=sc.nextInt();
         gasbill=gasno*7;
         project rbills=new project();
+        if(gasno>3){
+            System.out.println("Digits in red cannot be more than 3.");
+            System.out.println("Bill not calculated.");
+            gasbill=0;
+        }
+        else{
+            System.out.println("Bill calculated.");
+        }
         System.out.println("Enter 1 to calculate electricity bill.");
         System.out.println("Enter 2 to calculate mobile bill.");
         System.out.println("Enter 3 to show submenu.");
@@ -272,30 +321,7 @@ class project{
 
     public static void main(){
         Scanner sc=new Scanner(System.in);
-        System.out.println("                                    *****WELCOME TO THE JVMTP BILLING CENTRE*****");
-        System.out.println("                            ");
-        System.out.println("            *****TODAY, WE WILL BE HELPING YOU IN CALCULATING YOUR BILLS, AND REDUCING YOUR BURDEN*****");
-        System.out.println("                            ");
-        System.out.println("           *****YOU CAN CHOOSE AMONG ANY 3 OF THE BILLS AND ALSO ALL THREE OF THEM TO CALCULATE THEM*****");
-        System.out.println("                            ");
-        System.out.println("                          *****THE TYPES OF BILLS Y'ALL CAN CALCULATE ARE AS FOLLOWS:*****");
-        System.out.println("                            ");
-        System.out.println("            1.)GAS BILL FOR THE NUMBER OF MONTHS USED                   ");
-        System.out.println("                            ");
-        System.out.println("            2.)ELECTRICITY BILL FOR ANY NUMBER OF MONTHS");
-        System.out.println("                            ");
-        System.out.println("            3.)TELEPHONE BILL TILL DATE OR AN ESTIMATE ON AN AMOUNT YOU ARE GOING TO PAY ON YOUR NEXT RECHARGE");
-        System.out.println("                            ");
-        System.out.println("   *****WE WILL BE ASKING YOU SOME DETAILS THOSE ARE MANDATORY AND PLEASE ENTER THEM FOR A SMOOTH EXPERIENCE*****");
-        System.out.println("                            ");
-        System.out.println("                                  *****PLEASE FOLLOW HE ON-SCREEN INSTRUCTIONS*****");
-        System.out.println("                                                           ");
-        System.out.println("                                                            ");
         //CODE BREAK-UP
-        System.out.println("Enter name:");
-        name=sc.nextLine();
-        System.out.println("Enter address:");
-        address=sc.nextLine();
         System.out.println("Choose bill to be calculated:\n1.)Gas\n2.)Electricity\n3.)telephone");
         System.out.println("____________________________________________________________________");
         opt=sc.nextInt();
@@ -314,6 +340,7 @@ class project{
             break;
             default:
             System.out.println("Invalid choice");
+            System.out.println();
             option();
         }
     }
