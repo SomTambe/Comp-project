@@ -1,2 +1,0 @@
-This is the computer project belonging TO SOM TAMBE OF GRADE 10 ICSE OF CHILDRENS ACADEMY, ASHOK NAGAR.
-IT IS FINAL.
